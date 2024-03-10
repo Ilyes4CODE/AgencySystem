@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+{% endblock style %}
+{% block title %}Main{% endblock title %}
+{% block content %}
+<section class="slider_section long_section">
+    <div id="customCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container ">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="detail-box">
+                  <h1>
+                    For All Your <br>
+                    Furniture Needs
+                  </h1>
+                  <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
+                  </p>
+                  <div class="btn-box">
+                    <a href="" class="btn1">
+                      Contact Us
+                    </a>
+                    <a href="" class="btn2">
+                      About Us
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="img-box">
+                  <img src="{% static 'images/slider-img.png' %}" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end slider section -->
+</div>
+
+<!-- furniture section -->
+
+<section class="furniture_section layout_padding">
+  <div class="container">
+    <div class="heading_container">
+      <h2>
+        Our Packages
+      </h2>
+      <p>
+        which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't an
+      </p>
+    </div>
+    <div class="row">
+      {% if count == 0 %}
+      <div class="center">
+          <div class="alert alert-primary" role="alert">
+              There is no packages yet
+            </div>
+          <div class="box" style="background:white;">
+              <div class="img-box" style="background:white;"></div>
+          </div>
+      </div>
+      {% else %}
+      {% for i in pack %}
+      <div class="col-md-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="{{i.image.url}}" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                {{i.Description}}
+              </h5>
+              <div class="price_box">
+                <h6 class="price_heading">
+                   {{i.price}} <span>DZD</span>
+                </h6><br>
+                
+                <a href="">
+                  Reserve
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      {% endif %}
+      
+    </div>
+  </div>
+</section>
+
+<section class="about_section layout_padding long_section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="img-box">
+          <img src="{% static 'images/about-img.png' %}" alt="">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="detail-box">
+          <div class="heading_container">
+            <h2>
+              About Us
+            </h2>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolorem eum consequuntur ipsam repellat dolor soluta aliquid laborum, eius odit consectetur vel quasi in quidem, eveniet ab est corporis tempore.
+          </p>
+          <a href="">
+            Read More
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- end about section -->
+
+
+<!-- contact section -->
+<section class="contact_section  long_section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form_container">
+          <div class="heading_container">
+            <h2>
+              Contact Us
+            </h2>
+          </div>
+          <form action="" method="POST">
+            {% csrf_token %}
+            <div>
+              <input type="text" placeholder="Your Name" />
+            </div>
+            <div>
+              <input type="text" placeholder="Phone Number" />
+            </div>
+            <div>
+              <input type="email" placeholder="Email" />
+            </div>
+            <div>
+              <input type="text" class="message-box" placeholder="Message" />
+            </div>
+            <div class="btn_box">
+                <button type="submit">
+                  SEND
+                </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="map_container">
+          <div class="map">
+            <div id="googleMap"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end contact section -->
+
+
+
+{% endblock content %}

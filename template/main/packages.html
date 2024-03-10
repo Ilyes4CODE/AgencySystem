@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Our Packages{% endblock title %}
+{% block content %}
+<section class="furniture_section layout_padding">
+  <div class="container">
+    <div class="heading_container">
+      <h2>
+        Our Packages
+      </h2>
+      <p>
+        which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't an
+      </p>
+    </div>
+    <div class="row">
+      {% if count == 0 %}
+      <div class="center">
+          <div class="alert alert-primary" role="alert">
+              There is no packages yet
+            </div>
+          <div class="box" style="background:white;">
+              <div class="img-box" style="background:white;"></div>
+          </div>
+      </div>
+      {% else %}
+      {% for i in pack %}
+      <div class="col-md-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="{{i.image.url}}" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                {{i.Description}}
+              </h5>
+              <div class="price_box">
+                <h6 class="price_heading">
+                   {{i.price}} <span>DZD</span>
+                </h6><br>
+                
+                <a href="">
+                  Reserve
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      {% endif %}
+      
+    </div>
+  </div>
+</section>
+{% endblock content %}

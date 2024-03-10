@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    .center {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'css/dash.css' %}">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<script src="{% static 'js/dash.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<script>
+		$(".hamburger").click(function(){
+			$(".wrapper").toggleClass("collapse");
+		  });
+	</script>
+	<title>Packages</title>
+</head>
+<body>
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+	
+<div class="wrapper">
+
+  <div class="top_navbar">
+    <div class="hamburger">
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="three"></div>
+    </div>
+    <div class="top_menu">
+      <div class="logo">
+        Travel Administration
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <ul>
+      <li>
+        <a href="{% url "AdminDash" %}">
+            <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+            <span class="title">Dashboard</span>
+        </a>
+    </li>
+        <li>
+          <a href="{% url "Clients" %}">
+              <span class="icon"><i class="fas fa-users"></i></span>
+              <span class="title">Clients</span>
+          </a>
+      </li>
+        <li>
+          <a href="{% url "Admin_Packages" %}">
+              <span class="icon"><i class="fas fa-box-open"></i></span>
+              <span class="title">Packages</span>
+          </a>
+      </li>
+        <li>
+          <a href="{% url 'Logout' %}">
+              <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+              <span class="title">Logout</span>
+          </a>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="main_container">
+    <div class="center">
+      <button type="button" class="btn btn-primary"><a href="{% url "Add_pack" %}" style="text-decoration: none; color: inherit;">Add Package</a></button>
+    </div><br>
+      {% if count == 0 %}
+      <div class="alert alert-primary" role="alert">
+        There is no packages
+      </div>
+      {% else %}
+      <section class="furniture_section layout_padding" style="padding:0px;">
+        <div class="container">
+          <div class="row">
+            {% for i in pack %}
+            <div class="col-md-6 col-lg-4">
+              <div class="box">
+                <div class="img-box">
+                  <img src="{{i.image.url}}" alt="">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                    {{i.Description}}
+                  </h5>
+                  <div class="price_box">
+                    <h6 class="price_heading">
+                       {{i.price}} <span>DZD</span>
+                    </h6><br>
+                    <a href="">
+                      Delete
+                    </a>
+                    <a href="">
+                      Update
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+      {% endif %}
+  </div>
+</div>
+</body>
+</html>
